@@ -161,8 +161,9 @@
   .shot.wide figcaption { max-width: none; }
 
   /* ---------- DinePOS mockup ---------- */
+  .mock-fit { margin-top: 44px; }
   .mock {
-    margin-top: 44px; background: #fff; border: 1px solid var(--rule); border-radius: 8px; overflow: hidden;
+    width: 1080px; transform-origin: 0 0; background: #fff; border: 1px solid var(--rule); border-radius: 8px; overflow: hidden;
     font: 14px/1.4 var(--body); color: #22262b;
     box-shadow: 0 1px 2px rgba(0,0,0,.04), 0 10px 30px rgba(40,35,20,.06);
   }
@@ -284,8 +285,6 @@
   /* ---------- responsive ---------- */
   @media (max-width: 900px) {
     .p-body { grid-template-columns: 1fr; gap: 24px; }
-    .m-body { grid-template-columns: 1fr; }
-    .m-order { border-left: 0; border-top: 1px solid #e3e4e5; }
     .hw { grid-template-columns: 1fr 1fr; }
     .hw figure:first-child { grid-column: 1 / -1; }
   }
@@ -306,23 +305,6 @@
     .log table { min-width: 0; font-size: 13.5px; }
     .log th, .log td { padding: 9px 10px; }
     .log th:first-child, .log td:first-child { display: none; }
-    .m-clock { display: none; }
-    /* DinePOS preview: compact phone layout */
-    .mock { margin-inline: calc(-1 * var(--gutter) + 6px); border-radius: 10px; }
-    .m-bar { gap: 12px; padding: 10px 12px; }
-    .m-tabs { flex: 1; font-size: 13px; }
-    .m-tabs span { padding: 5px 9px; }
-    .m-floor { padding: 12px 12px 14px; }
-    .m-legend { gap: 10px; font-size: 12px; margin-bottom: 10px; }
-    .m-zone { font-size: 11px; margin: 2px 0 6px; }
-    .m-tables { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 6px; margin-bottom: 12px; }
-    .t { min-height: 50px; padding: 6px 7px; border-radius: 5px; }
-    .t b { font-size: 14px; }
-    .t small { font-size: 11px; }
-    .t small span + span { display: none; }
-    .o-head, .o-items, .o-total, .o-actions { padding-left: 12px; padding-right: 12px; }
-    .line { font-size: 13px; }
-    .o-actions span { padding: 9px 4px; font-size: 13px; }
     .c-list { grid-template-columns: 1fr; }
     .fab {
       display: inline-flex; position: fixed; right: 16px; bottom: calc(16px + env(safe-area-inset-bottom)); z-index: 5;
@@ -429,7 +411,7 @@
       </div>
     </div>
 
-    <div class="mock" role="img" aria-label="Design preview of DinePOS: a table floor plan with Table 5 selected and its running order">
+    <div class="mock-fit"><div class="mock" role="img" aria-label="Design preview of DinePOS: a table floor plan with Table 5 selected and its running order">
       <div class="m-bar">
         <div class="m-logo"><i>D</i>DinePOS</div>
         <div class="m-tabs"><span class="on">Tables</span><span>Takeaway</span><span>Online</span><span>Kitchen</span><span>Bills</span></div>
@@ -493,7 +475,7 @@
           </div>
         </div>
       </div>
-    </div>
+    </div></div>
     <p class="mock-note">Design preview of the main screen. Final app may differ.</p>
   </section>
 
@@ -762,6 +744,20 @@
     var dx = e.changedTouches[0].clientX - x0; x0 = null;
     if (Math.abs(dx) > 50) step(dx < 0 ? 1 : -1);
   });
+})();
+
+// DinePOS preview: keep the desktop layout and scale it down to fit, like a screenshot.
+(function () {
+  var fit = document.querySelector('.mock-fit'), mock = fit && fit.querySelector('.mock');
+  if (!fit || !mock) return;
+  function size() {
+    var s = Math.min(1, fit.clientWidth / mock.offsetWidth);
+    mock.style.transform = s < 1 ? 'scale(' + s + ')' : '';
+    fit.style.height = s < 1 ? Math.ceil(mock.offsetHeight * s) + 'px' : '';
+  }
+  size();
+  if ('ResizeObserver' in window) new ResizeObserver(size).observe(fit); else window.addEventListener('resize', size);
+  if (document.fonts) document.fonts.ready.then(size);
 })();
 
 // Hide the floating contact button once the contact section is on screen.
