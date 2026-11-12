@@ -78,6 +78,21 @@
   .intro p.lede { margin-top: 26px; max-width: 620px; font-size: 19px; color: #3b3a36; }
   .intro .meta { margin-top: 18px; color: var(--muted); font-size: 15px; }
   .intro .actions { margin-top: 30px; display: flex; flex-wrap: wrap; gap: 10px; }
+  .intro { display: grid; grid-template-columns: 1fr auto; gap: 40px 56px; align-items: end; }
+  .intro-contact {
+    list-style: none; font-size: 16px; line-height: 1.5;
+    border-left: 1px solid var(--rule); padding: 4px 0 4px 28px;
+  }
+  .intro-contact li { display: grid; grid-template-columns: 82px 1fr; gap: 10px; padding: 6px 0; }
+  .intro-contact span {
+    color: var(--muted); font-size: 12px; letter-spacing: .08em; text-transform: uppercase; padding-top: 3px;
+  }
+  .intro-contact a { text-decoration: none; }
+  .intro-contact a:hover { color: var(--accent); text-decoration: underline; text-underline-offset: 3px; }
+  @media (max-width: 860px) {
+    .intro { grid-template-columns: 1fr; }
+    .intro-contact { border-left: 0; border-top: 1px solid var(--rule); padding: 16px 0 0; }
+  }
 
 
   /* ---------- projects ---------- */
@@ -310,14 +325,20 @@
   </header>
 
   <section class="intro">
-    <h1>Zohaib Hamdule</h1>
-    <div class="role">Software Engineer</div>
-    <p class="lede">I build mobile apps, websites, billing software and small hardware systems for shops, restaurants and local businesses. Simple to use, with support and maintenance after they go live.</p>
-    <p class="meta">M.Tech, Computer Science &amp; Engineering · NIT Goa</p>
-    <div class="actions">
-      <a class="btn" href="#contact">Get in touch</a>
-      <a class="btn ghost" href="#simplepos">See my work</a>
+    <div class="intro-main">
+      <h1>Zohaib Hamdule</h1>
+      <div class="role">Software Engineer</div>
+      <p class="lede">I build mobile apps, websites, billing software and small hardware systems for shops, restaurants and local businesses. Simple to use, with support and maintenance after they go live.</p>
+      <p class="meta">M.Tech, Computer Science &amp; Engineering · NIT Goa</p>
+      <div class="actions">
+        <a class="btn" href="https://wa.me/919892161214?text=Hi%20Zohaib%2C%20I%20saw%20your%20portfolio." target="_blank" rel="noopener">Message on WhatsApp</a>
+        <a class="btn ghost" href="#simplepos">See my work</a>
+      </div>
     </div>
+    <ul class="intro-contact">
+      <li><span>Phone</span><a href="tel:+919892161214">+91 98921 61214</a></li>
+      <li><span>Email</span><a href="mailto:zohaib.hamdule@gmail.com">zohaib.hamdule@gmail.com</a></li>
+      <li><span>WhatsApp</span><a href="https://wa.me/919892161214" target="_blank" rel="noopener">+91 98921 61214</a></li>    </ul>
   </section>
 
   <!-- 01 SimplePOS -->
