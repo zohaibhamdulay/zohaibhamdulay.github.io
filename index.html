@@ -169,7 +169,9 @@
   .m-bar { display: flex; align-items: center; gap: 18px; padding: 10px 16px; background: #22262b; color: #e9e7e2; }
   .m-logo { font-weight: 700; letter-spacing: .01em; display: flex; align-items: center; gap: 8px; }
   .m-logo i { width: 22px; height: 22px; border-radius: 5px; background: #c8553d; display: grid; place-items: center; font-style: normal; font-size: 12px; color: #fff; }
-  .m-tabs { display: flex; gap: 4px; font-size: 13.5px; overflow-x: auto; }
+  .m-tabs { display: flex; gap: 4px; font-size: 13.5px; overflow-x: auto; min-width: 0; scrollbar-width: none; }
+  .m-tabs::-webkit-scrollbar { display: none; }
+  .m-body > * { min-width: 0; }
   .m-tabs span { padding: 6px 10px; border-radius: 4px; color: #a9adb3; white-space: nowrap; }
   .m-tabs span.on { background: #3a3f46; color: #fff; }
   .m-clock { margin-left: auto; font-size: 13px; color: #a9adb3; white-space: nowrap; }
@@ -305,6 +307,22 @@
     .log th, .log td { padding: 9px 10px; }
     .log th:first-child, .log td:first-child { display: none; }
     .m-clock { display: none; }
+    /* DinePOS preview: compact phone layout */
+    .mock { margin-inline: calc(-1 * var(--gutter) + 6px); border-radius: 10px; }
+    .m-bar { gap: 12px; padding: 10px 12px; }
+    .m-tabs { flex: 1; font-size: 13px; }
+    .m-tabs span { padding: 5px 9px; }
+    .m-floor { padding: 12px 12px 14px; }
+    .m-legend { gap: 10px; font-size: 12px; margin-bottom: 10px; }
+    .m-zone { font-size: 11px; margin: 2px 0 6px; }
+    .m-tables { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 6px; margin-bottom: 12px; }
+    .t { min-height: 50px; padding: 6px 7px; border-radius: 5px; }
+    .t b { font-size: 14px; }
+    .t small { font-size: 11px; }
+    .t small span + span { display: none; }
+    .o-head, .o-items, .o-total, .o-actions { padding-left: 12px; padding-right: 12px; }
+    .line { font-size: 13px; }
+    .o-actions span { padding: 9px 4px; font-size: 13px; }
     .c-list { grid-template-columns: 1fr; }
     .fab {
       display: inline-flex; position: fixed; right: 16px; bottom: calc(16px + env(safe-area-inset-bottom)); z-index: 5;
