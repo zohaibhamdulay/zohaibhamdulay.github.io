@@ -9,7 +9,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Source+Sans+3:wght@400;500;600;700&family=Source+Serif+4:opsz,wght@8..60,500;8..60,600&display=swap" rel="stylesheet">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23234c44'/%3E%3Ctext x='16' y='21.5' font-family='Georgia,serif' font-size='14' fill='%23fff' text-anchor='middle'%3EZH%3C/text%3E%3C/svg%3E">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Crect width='40' height='40' fill='%23234c44'/%3E%3Cpath d='M5 20H35M17.5 7V33M22.5 7V33M22.5 7L35 20M5 20L17.5 33' fill='none' stroke='%23fff' stroke-width='3.4' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
 <style>
   :root {
     --bg: #f6f4ef;
@@ -51,8 +51,14 @@
   .mark span {
     display: grid; place-items: center; width: 34px; height: 34px;
     border: 1.5px solid var(--accent); color: var(--accent);
-    font-weight: 500; font-size: 13px; letter-spacing: .04em;
   }
+  .mark svg {
+    width: 82%; height: 82%; fill: none; stroke: currentColor;
+    stroke-width: 2.6; stroke-linecap: round; stroke-linejoin: round;
+  }
+  .top-links { display: flex; align-items: center; gap: 22px; }
+  .top-link { font-weight: 600; font-size: 15px; color: var(--accent); text-decoration: none; }
+  .top-link:hover { text-decoration: underline; text-underline-offset: 4px; }
   .btn {
     display: inline-flex; align-items: center; gap: 8px;
     font: 600 15px/1 var(--sans);
@@ -292,6 +298,7 @@
     :root { --gutter: 16px; --shot-h: 380px; }
     body { font-size: 16px; }
     .top .btn { padding: 10px 14px; }
+    .top-links { gap: 16px; }
     .intro { padding: 36px 0 44px; }
     .intro p.lede, .summary { font-size: 17px; }
     .project { padding: 52px 0 56px; }
@@ -313,6 +320,8 @@
     }
     .fab.hide { opacity: 0; transform: translateY(12px); pointer-events: none; }
   }
+  @media (max-width: 400px) { .mark-name { display: none; } }
+  .mark-name { font-weight: 600; }
   @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
 </style>
 </head>
@@ -320,8 +329,11 @@
 
 <div class="wrap">
   <header class="top">
-    <a class="mark" href="#"><span>ZH</span>Zohaib Hamdule</a>
-    <a class="btn" href="#contact">Contact</a>
+    <a class="mark" href="#"><span role="img" aria-label="ZH"><svg viewBox="0 0 40 40" aria-hidden="true"><path d="M5 20H35M17.5 7V33M22.5 7V33M22.5 7L35 20M5 20L17.5 33"/></svg></span><b class="mark-name">Zohaib Hamdule</b></a>
+    <nav class="top-links">
+      <a class="top-link" href="https://toolshed.ffff0h.com">Toolshed</a>
+      <a class="btn" href="#contact">Contact</a>
+    </nav>
   </header>
 
   <section class="intro">
@@ -333,7 +345,7 @@
     <ul class="intro-contact">
       <li><span>Phone</span><a href="tel:+919892161214">+91 98921 61214</a></li>
       <li><span>Email</span><a href="mailto:zohaib.hamdule@gmail.com">zohaib.hamdule@gmail.com</a></li>
-      <li><span>WhatsApp</span><a href="https://wa.me/919892161214" target="_blank" rel="noopener">+91 98921 61214</a></li>    </ul>
+    </ul>
   </section>
 
   <!-- 01 SimplePOS -->
